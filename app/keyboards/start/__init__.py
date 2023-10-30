@@ -1,0 +1,18 @@
+from telebot.types import InlineKeyboardMarkup
+from app.keyboards.start.button import downlad_documents_button, insurance_live_button,insurance_live_and_property_button,executed_documents_button,insurance_property_button
+
+customer_start_keyboard = InlineKeyboardMarkup()
+customer_start_keyboard.row(insurance_live_button)
+customer_start_keyboard.row(insurance_property_button)
+customer_start_keyboard.row(insurance_live_and_property_button)
+
+customer_start_keyboard.row(executed_documents_button)
+
+admin_start_keyboard = InlineKeyboardMarkup()
+# executor_start_keyboard.row(search_order_button)
+
+admin_start_keyboard.row(executed_documents_button)
+admin_start_keyboard.row(downlad_documents_button)
+
+
+
