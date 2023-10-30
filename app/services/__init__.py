@@ -5,9 +5,7 @@ incurance_property_storage = telebot.StateMemoryStorage()
 incurance_live_and_property_storage = telebot.StateMemoryStorage()
 
 
-"""@bot.callback_query_handler(func=lambda call: skip_button_info.filter(call.data) and
-                                                  incurance_live_storage.get_state(call.message.chat.id,
-                                                                                   call.from_user.id) == "incurance_live")
+"""@bot.callback_query_handler(func=lambda call: skip_button_info.filter(call.data))
     def skip_incurance_live_policy(call: CallbackQuery):
         bot.send_message(chat_id=call.message.chat.id, text='Данные отправлены менеджеру!')
         bot.send_message(chat_id=call.message.chat.id, text='Соcтавляем коммерческое предложение...')

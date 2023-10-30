@@ -31,20 +31,20 @@ def incurance_live(call: CallbackQuery):
     bot.register_next_step_handler(call.message, set_incurance_live_bank)
 
 
-def set_incurance_live_credit_balance(message: Message):
-    incurance_live_storage.set_data(chat_id=message.chat.id, user_id=message.from_user.id,
-                                    key="credit_balance", value=message.text)
-    bot.send_message(chat_id=message.chat.id, text='Введите дату рождения заемщика в формате ДД.ММ.ГГГГ')
+    def set_incurance_live_credit_balance(message: Message):
+        incurance_live_storage.set_data(chat_id=message.chat.id, user_id=message.from_user.id,
+                                        key="credit_balance", value=message.text)
+        bot.send_message(chat_id=message.chat.id, text='Введите дату рождения заемщика в формате ДД.ММ.ГГГГ')
 
-    bot.register_next_step_handler(message, set_incurance_live_birthdate)
+        bot.register_next_step_handler(message, set_incurance_live_birthdate)
 
 
-def set_incurance_live_birthdate(message: Message):
-    incurance_live_storage.set_data(chat_id=message.chat.id, user_id=message.from_user.id,
-                                    key="birthdate", value=message.text)
-    bot.send_message(chat_id=message.chat.id, text="Выберите пол заемщика", reply_markup=choose_sex_keyboard)
-    incurance_live_storage.set_state(chat_id=message.chat.id, user_id=message.from_user.id,
-                                    state="live_sex")
+    def set_incurance_live_birthdate(message: Message):
+        incurance_live_storage.set_data(chat_id=message.chat.id, user_id=message.from_user.id,
+                                        key="birthdate", value=message.text)
+        bot.send_message(chat_id=message.chat.id, text="Выберите пол заемщика", reply_markup=choose_sex_keyboard)
+        incurance_live_storage.set_state(chat_id=message.chat.id, user_id=message.from_user.id,
+                                        state="live_sex")
 
     @bot.callback_query_handler(func=lambda call: male_button_info.filter(call.data) or
                                                   female_button_info.filter(call.data) and
@@ -69,7 +69,7 @@ def set_incurance_live_birthdate(message: Message):
             else:
                 file_info = bot.get_file(message.document.file_id)
                 downloaded_file = bot.download_file(file_info.file_path)
-                print(message.document.file_name)
+                (message.document.file_name)
                 with open(message.document.file_name, 'wb') as f:
                     f.write(downloaded_file)
 
@@ -284,7 +284,7 @@ def set_incurance_live_birthdate(message: Message):
 
 
     def set_loan_agreement(message: Message):
-        print(message.content_type)
+        (message.content_type)
 
         if str(message.content_type) == "photo":
             i = 0
@@ -306,7 +306,7 @@ def set_incurance_live_birthdate(message: Message):
         elif str(message.content_type) == "document":
                 file_info = bot.get_file(message.document.file_id)
                 downloaded_file = bot.download_file(file_info.file_path)
-                print(message.document.file_name)
+                (message.document.file_name)
                 with open(message.document.file_name, 'wb') as f:
                     f.write(downloaded_file)
 
@@ -407,7 +407,6 @@ def set_incurance_live_birthdate(message: Message):
         else:
             file_info = bot.get_file(message.document.file_id)
             downloaded_file = bot.download_file(file_info.file_path)
-            print(incurance_live_storage.get_data(chat_id=message.chat.id, user_id=message.from_user.id))
             with open(message.document.file_name, 'wb') as f:
                 f.write(downloaded_file)
 
@@ -473,11 +472,10 @@ def set_incurance_live_birthdate(message: Message):
         bot.send_message(admin_id,
                          text='Отправьте ссылку для оплаты')
         tg_id = call.data.split("[]")[1]
-        print(tg_id)
 
         def send_documents(message: Message):
             bot.send_message(chat_id=tg_id,
                              text="Ссылка для оплаты полиса"
                                   f"{message.text}")
 
-        bot.register_next_step_handler(message, send_documents)
+        bot.register_next_step_handler(call.message, send_documents)

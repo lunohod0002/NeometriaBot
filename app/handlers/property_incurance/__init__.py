@@ -24,7 +24,7 @@ def incurance_property(call: CallbackQuery):
                           text='Укажите наименование банка, выдавшего ипотечный кредит')
 
     def set_property_incurance_property_bank(message: Message):
-        print(message)
+        (message)
         incurance_property_storage.set_data(chat_id=message.chat.id, user_id=message.from_user.id,
                                         key="bank", value=message.text)
         bot.send_message(chat_id=call.message.chat.id, text='Введите сумму кредита (остаток кредитной задолжнности')
@@ -34,19 +34,19 @@ def incurance_property(call: CallbackQuery):
     bot.register_next_step_handler(call.message, set_property_incurance_property_bank)
 
 
-def set_property_incurance_property_credit_balance(message: Message):
-    incurance_property_storage.set_data(chat_id=message.chat.id, user_id=message.from_user.id,
-                                    key="credit_balance", value=message.text)
-    bot.send_message(chat_id=message.chat.id, text='Введите дату рождения заемщика в формате ДД.ММ.ГГГГ')
+    def set_property_incurance_property_credit_balance(message: Message):
+        incurance_property_storage.set_data(chat_id=message.chat.id, user_id=message.from_user.id,
+                                        key="credit_balance", value=message.text)
+        bot.send_message(chat_id=message.chat.id, text='Введите дату рождения заемщика в формате ДД.ММ.ГГГГ')
 
-    bot.register_next_step_handler(message, set_property_incurance_property_birthdate)
+        bot.register_next_step_handler(message, set_property_incurance_property_birthdate)
 
 
-def set_property_incurance_property_birthdate(message: Message):
-    incurance_property_storage.set_data(chat_id=message.chat.id, user_id=message.from_user.id,
-                                    key="birthdate", value=message.text)
-    bot.send_message(chat_id=message.chat.id, text="Выберите пол заемщика", reply_markup=choose_sex_keyboard)
-    incurance_live_storage.set_state(message.chat.id, message.from_user.id,state="incurance_property")
+    def set_property_incurance_property_birthdate(message: Message):
+        incurance_property_storage.set_data(chat_id=message.chat.id, user_id=message.from_user.id,
+                                        key="birthdate", value=message.text)
+        bot.send_message(chat_id=message.chat.id, text="Выберите пол заемщика", reply_markup=choose_sex_keyboard)
+        incurance_live_storage.set_state(message.chat.id, message.from_user.id,state="incurance_property")
 
 
 
@@ -55,7 +55,7 @@ def set_property_incurance_property_birthdate(message: Message):
                                                   incurance_property_storage.get_state(call.message.chat.id,
                                                                                    call.from_user.id) == "incurance_property")
     def choose_incurance_property_sex(call: CallbackQuery):
-        print(call)
+        (call)
         incurance_property_storage.set_data(chat_id=call.message.chat.id, user_id=call.from_user.id, key="sex",
                                         value=call.data)
         bot.answer_callback_query(call.id)
@@ -74,7 +74,7 @@ def set_property_incurance_property_birthdate(message: Message):
             else:
                 file_info = bot.get_file(message.document.file_id)
                 downloaded_file = bot.download_file(file_info.file_path)
-                print(message.document.file_name)
+                (message.document.file_name)
                 with open(message.document.file_name, 'wb') as f:
                     f.write(downloaded_file)
 
@@ -309,7 +309,7 @@ def set_property_incurance_property_birthdate(message: Message):
         elif str(message.content_type) == "document":
             file_info = bot.get_file(message.document.file_id)
             downloaded_file = bot.download_file(file_info.file_path)
-            print(message.document.file_name)
+            (message.document.file_name)
             with open(message.document.file_name, 'wb') as f:
                 f.write(downloaded_file)
 
@@ -333,7 +333,7 @@ def set_property_incurance_property_birthdate(message: Message):
         if str(message.content_type) == "document":
             file_info = bot.get_file(message.document.file_id)
             downloaded_file = bot.download_file(file_info.file_path)
-            print(message.document.file_name)
+            (message.document.file_name)
             with open(message.document.file_name, 'wb') as f:
                 f.write(downloaded_file)
 
@@ -422,7 +422,7 @@ def set_property_incurance_property_birthdate(message: Message):
         else:
             file_info = bot.get_file(message.document.file_id)
             downloaded_file = bot.download_file(file_info.file_path)
-            print(incurance_property_storage.get_data(chat_id=message.chat.id, user_id=message.from_user.id))
+            (incurance_property_storage.get_data(chat_id=message.chat.id, user_id=message.from_user.id))
             with open(message.document.file_name, 'wb') as f:
                 f.write(downloaded_file)
 
@@ -491,7 +491,7 @@ def set_property_incurance_property_birthdate(message: Message):
             bot.send_message(admin_id,
                              text='Отправьте ссылку для оплаты')
             tg_id = call.data.split("[]")[1]
-            print(tg_id)
+            (tg_id)
             def property_send_documents(message: Message):
                 bot.send_message(chat_id=tg_id,
                                  text="Ссылка для оплаты полиса"
