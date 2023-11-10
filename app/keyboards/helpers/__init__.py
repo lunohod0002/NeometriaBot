@@ -2,9 +2,9 @@ from telebot.types import ReplyKeyboardMarkup,InlineKeyboardButton,InlineKeyboar
 
 from telebot.types import KeyboardButton
 
-share_contact_button = KeyboardButton(text='Поделиться номером телефона', request_contact=True)
+share_contact_button = KeyboardButton(text='Поделиться номером телефона', request_contact=True,)
 
-share_contact_keyboard = ReplyKeyboardMarkup()
+share_contact_keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
 
 share_contact_keyboard.row(share_contact_button)
 

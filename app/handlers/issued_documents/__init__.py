@@ -10,7 +10,7 @@ import os
 def send_tg_id(call: CallbackQuery):
     pdf=PDF()
     mas = pdf.download_document(call.message.chat.id, "issued_documents")
-    if (mas is None):
+    if (mas is None and mas==None):
         bot.send_message(chat_id=call.message.chat.id,
                          text='У вас нет оформленных документов')
     else:

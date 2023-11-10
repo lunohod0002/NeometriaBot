@@ -5,7 +5,6 @@ customer_start_keyboard = InlineKeyboardMarkup()
 customer_start_keyboard.row(insurance_live_button)
 customer_start_keyboard.row(insurance_property_button)
 customer_start_keyboard.row(insurance_live_and_property_button)
-
 customer_start_keyboard.row(executed_documents_button)
 
 admin_start_keyboard = InlineKeyboardMarkup()
