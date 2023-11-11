@@ -20,7 +20,7 @@ from app.keyboards.start.text import insurance_live_button_info
                             and incurance_live_and_property_storage.get_data(chat_id=call.message.chat.id, user_id=call.message.chat.id)=={}
                             and incurance_property_storage.get_data(chat_id=call.message.chat.id, user_id=call.message.chat.id)=={})
 def incurance_live0(call: CallbackQuery):
-    print(incurance_live_storage.get_state(chat_id=call.message.chat.id, user_id=call.message.chat.id))
+    (incurance_live_storage.get_state(chat_id=call.message.chat.id, user_id=call.message.chat.id))
 
     incurance_live_storage.set_data(chat_id=call.message.chat.id, user_id=call.message.chat.id,
                                     key="1", value="1")
@@ -47,21 +47,21 @@ def set_incurance_live_credit_balance(message: Message):
 
 
 def set_incurance_live_birthdate(message: Message):
-    print(type(message.chat.id))
+    (type(message.chat.id))
     incurance_live_storage.set_data(chat_id=message.chat.id, user_id=message.chat.id,
                                     key="birthdate", value=message.text)
     bot.send_message(chat_id=message.chat.id, text="Выберите пол заемщика", reply_markup=choose_sex_keyboard)
     incurance_live_storage.set_state(chat_id=message.chat.id, user_id=message.chat.id,
                                     state="male")
     bot.callback_query_handler(choose_incurance_live_sex)
-    print(incurance_live_storage.get_state(chat_id=message.chat.id, user_id=message.chat.id))
+    (incurance_live_storage.get_state(chat_id=message.chat.id, user_id=message.chat.id))
 
 
 @bot.callback_query_handler(func=lambda call: incurance_live_storage.get_state(call.message.chat.id,
                                                                                call.message.chat.id) == "male" and (male_button_info.filter(call.data) or
                                               female_button_info.filter(call.data)))
 def choose_incurance_live_sex(call: CallbackQuery):
-    print(incurance_live_storage.get_state(chat_id=call.message.chat.id, user_id=call.message.chat.id))
+    (incurance_live_storage.get_state(chat_id=call.message.chat.id, user_id=call.message.chat.id))
 
     incurance_live_storage.set_data(chat_id=call.message.chat.id, user_id=call.message.chat.id, key="sex",
                                     value=call.data)
@@ -71,7 +71,7 @@ def choose_incurance_live_sex(call: CallbackQuery):
     incurance_live_storage.set_state(chat_id=call.message.chat.id, user_id=call.message.chat.id,
                                        state="set_live_incurance_policy")
     def set_incurance_property_policy(message):
-        print(incurance_live_storage.get_state(chat_id=message.chat.id, user_id=message.chat.id))
+        (incurance_live_storage.get_state(chat_id=message.chat.id, user_id=message.chat.id))
 
         if incurance_live_storage.get_state(chat_id=call.message.chat.id,
                                             user_id=call.message.chat.id) == "set_live_incurance_policy":
@@ -213,7 +213,7 @@ def choose_incurance_live_sex(call: CallbackQuery):
 @bot.callback_query_handler(func=lambda call: skip_button_info.filter(call.data) and incurance_live_storage.get_state(chat_id=call.message.chat.id,
                                         user_id=call.message.chat.id) == "set_live_incurance_policy")
 def skip_incurance_live_policy(call: CallbackQuery):
-    print(incurance_live_storage.get_state(chat_id=call.message.chat.id, user_id=call.message.chat.id))
+    (incurance_live_storage.get_state(chat_id=call.message.chat.id, user_id=call.message.chat.id))
 
     (1)
     bot.send_message(chat_id=call.message.chat.id, text='Данные отправлены менеджеру!')
@@ -244,7 +244,7 @@ def skip_incurance_live_policy(call: CallbackQuery):
 
     bot.clear_step_handler_by_chat_id(call.message.chat.id)
 
-    print(incurance_live_storage.get_state(call.message.chat.id, call.message.chat.id))
+    (incurance_live_storage.get_state(call.message.chat.id, call.message.chat.id))
 
 
 
@@ -254,7 +254,7 @@ def skip_incurance_live_policy(call: CallbackQuery):
     func=lambda call: (call.data.split("[]")[0] == "text" or call.data.split("[]")[0] == "pdf")and incurance_live_storage.get_state(int(call.data.split("[]")[1]), int(call.data.split("[]")[1]))
                                          =="preliminary_calculation"   )
 def get_text_or_pdf_preliminary_calculation(call: CallbackQuery):
-    print(1)
+    (1)
 
     if call.data.split("[]")[0] == "text":
 
@@ -343,7 +343,7 @@ def get_text_or_pdf_preliminary_calculation(call: CallbackQuery):
                             os.remove(file_info.file_path.split("/")[1])
 
                         except Exception as e:
-                            print((e))
+                            ((e))
 
                     incurance_live_storage.set_state(chat_id=tg_id, user_id=tg_id,
                                                          state="confirm")

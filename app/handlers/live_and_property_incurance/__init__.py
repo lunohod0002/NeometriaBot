@@ -313,7 +313,7 @@ def get_text_or_pdf_preliminary_calculation_incurance_live_and_property(call: Ca
                             os.remove(file_info.file_path.split("/")[1])
 
                         except Exception as e:
-                            print((e))
+                            ((e))
 
                     incurance_live_and_property_storage.set_state(chat_id=tg_id, user_id=tg_id,
                                                                               state="confirm")

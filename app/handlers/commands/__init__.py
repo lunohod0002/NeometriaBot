@@ -6,7 +6,7 @@ from app.keyboards.start import customer_start_keyboard,admin_start_keyboard
 from app.services import incurance_property_storage,incurance_live_storage,incurance_live_and_property_storage
 @bot.message_handler(content_types=['text'],commands=['start'])
 def start(message: telebot.types.Message):
-    print(message.text)
+    (message.text)
     if isinstance(message,telebot.types.CallbackQuery):
         incurance_live_and_property_storage.reset_data(chat_id=message.chat.id, user_id=message.chat.id)
         incurance_live_storage.reset_data(chat_id=message.chat.id, user_id=message.chat.id)
@@ -39,5 +39,5 @@ def start(message: telebot.types.Message):
             incurance_live_storage.set_state(chat_id=message.chat.id, user_id=message.chat.id,
                                                           state="incurance_live_and_property")
             incurance_property_storage.set_state(chat_id=message.chat.id, user_id=message.chat.id, state="incurance_live_and_property")
-            print(incurance_live_and_property_storage.get_data(chat_id=message.chat.id, user_id=message.chat.id))
+            (incurance_live_and_property_storage.get_data(chat_id=message.chat.id, user_id=message.chat.id))
 
