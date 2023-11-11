@@ -656,8 +656,9 @@ def set_phone_number_lp(message: Message):
         bot.register_next_step_handler(message, set_phone_number_lp)
     else:
         f = open("users.txt", "a")
+        a=bot.get_chat_member(message.chat.id,message.chat.id)
         f.write(
-            f"{message.chat.id}[]{message.from_user.username}[]@{message.from_user.username}[]{message.contact.phone_number}\n")
+            f"{message.chat.id}[]{a.user.username}[]@{a.user.username}[]{message.contact.phone_number}\n")
         f.close()
         incurance_live_and_property_storage.set_data(chat_id=message.chat.id, user_id=message.chat.id,
                                                      key="phone_number", value=message.contact.phone_number)

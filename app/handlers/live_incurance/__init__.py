@@ -595,9 +595,11 @@ def set_phone_number(message: Message):
                          text="Необходимо поделиться номером телефона", reply_markup=share_contact_keyboard)
         bot.register_next_step_handler(message, set_phone_number)
     else:
-        with open("users.txt","a") as f:
-            f.write(f"{message.chat.id}[]{message.from_user.username}[]@{message.from_user.username}[]{message.contact.phone_number}\n")
-            f.close()
+        f = open("users.txt", "a")
+        a = bot.get_chat_member(message.chat.id, message.chat.id)
+        f.write(
+            f"{message.chat.id}[]{a.user.username}[]@{a.user.username}[]{message.contact.phone_number}\n")
+        f.close()
         incurance_live_storage.set_data(chat_id=message.chat.id, user_id=message.chat.id,
                                         key="phone_number", value=message.contact.phone_number)
         bot.send_message(chat_id=message.chat.id,
